@@ -244,7 +244,7 @@ async def call_apropriate_function(
         if message_to_send != "":
             mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
             message_to_send = mention_req_user + message_to_send
-            message_to_send = message_to_send + "\n\n" + "#uploads ©️ @FIMYFLX"
+            message_to_send = message_to_send + "\n\n" + "<b>#Uploads\n\n 📨 Powered By : @MDH_HINDI</b>"
         else:
             message_to_send = "<i>FAILED</i> to upload files. 😞😞"
         await user_message.reply_text(
@@ -449,7 +449,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 #
                 msg = f"\n<b>○ File: </b> `{downloading_dir_name}`"
                 msg += f"\n<b>○ Speed: {file.download_speed_string()} 🌝|| {file.upload_speed_string()} 🌚</b>"
-                msg += f"\n<b>○ Progress:⧼⧼{file.progress_string()}⧽⧽ of ⧼⧼{file.total_length_string()}⧽⧽</b>"
+                msg += f"\n<b>○ Progress: ⧼⧼{file.progress_string()}⧽⧽ of ⧼⧼{file.total_length_string()}⧽⧽</b>"
 
                 if is_file is None :
                    msg += f"\n<b>○ Connections : {file.connections}</b>"
@@ -458,10 +458,10 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
 
                 msg += f"\n<b>○ Status: {file.status}</b>"
                 msg += f"\n<b>○ ETA : {file.eta_string()}</b>"
-                msg += f"\n\n<b>📨 Powered By :- @MeGCloud</b>"
+                msg += f"\n\n<b>📨 Powered By :- @MDH_HINDI</b>"
                 inline_keyboard = []
                 ikeyboard = []
-                ikeyboard.append(InlineKeyboardButton("❌ Cancel ❌", callback_data=(f"cancel {gid}").encode("UTF-8")))
+                ikeyboard.append(InlineKeyboardButton("❌ Stop Download ❌", callback_data=(f"cancel {gid}").encode("UTF-8")))
                 inline_keyboard.append(ikeyboard)
                 reply_markup = InlineKeyboardMarkup(inline_keyboard)
                 #msg += reply_markup
