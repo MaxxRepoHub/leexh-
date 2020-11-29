@@ -244,7 +244,7 @@ async def call_apropriate_function(
         if message_to_send != "":
             mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
             message_to_send = mention_req_user + message_to_send
-            message_to_send = message_to_send + "\n\n" + "#uploads ©️ @FIMYFLX"
+            message_to_send = message_to_send + "\n\n" + "#uploaded © @MaxxBots"
         else:
             message_to_send = "<i>FAILED</i> to upload files. 😞😞"
         await user_message.reply_text(
@@ -414,7 +414,7 @@ async def call_apropriate_function_t(
     if message_to_send != "":
         mention_req_user = f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
         message_to_send = mention_req_user + message_to_send
-        message_to_send = message_to_send + "\n\n" + "#uploads"
+        message_to_send = message_to_send + "\n\n" + "#uploaded © @MaxxBots"
     else:
         message_to_send = "<i>FAILED</i> to upload files. 😞😞"
     await sent_message_to_update_tg_p.reply_to_message.reply_text(
@@ -447,21 +447,20 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 except:
                     pass
                 #
-                msg = f"\n<b>○ File: </b> `{downloading_dir_name}`"
-                msg += f"\n<b>○ Speed: {file.download_speed_string()} 🌝|| {file.upload_speed_string()} 🌚</b>"
-                msg += f"\n<b>○ Progress:⧼⧼{file.progress_string()}⧽⧽ of ⧼⧼{file.total_length_string()}⧽⧽</b>"
-
+                msg = f"\n<b>○File:</b> `<code>{downloading_dir_name}</code>`"
+                msg += f"\n<b>○Progress:</b> <code>〘 {file.progress_string()} 〙</code> <b>Of</b> <code>〘 {file.total_length_string()} 〙</code>"
+                msg += f"\n<b>○Speed:</b> <code>{file.download_speed_string()} ▲| {file.upload_speed_string()} ▼</code>"
                 if is_file is None :
-                   msg += f"\n<b>○ Connections : {file.connections}</b>"
+                   msg += f"\n<b>○Connections:</b> {file.connections}"
                 else :
-                   msg += f"\n<b>○Info : P : <code>{file.connections} || S : {file.num_seeders} ]</code>"
-
-                msg += f"\n<b>○ Status: {file.status}</b>"
-                msg += f"\n<b>○ ETA : {file.eta_string()}</b>"
-                msg += f"\n\n<b>📨 Powered By :- @MeGCloud</b>"
+                   msg += f"\n<b>○Peers:</b> <code>{file.connections}</code> || <b>○ Seeders:</b> <code>{file.num_seeders}</code>"
+ 
+                # msg += f"\n<b>○Status:</b> {file.status}"
+                msg += f"\n<b>○Left:</b> {file.eta_string()}"
+                msg += f"\n<b>○GID:</b> <code>{gid}</code>\n\n<b>🛡️ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆: @MaxxBots</b>"
                 inline_keyboard = []
                 ikeyboard = []
-                ikeyboard.append(InlineKeyboardButton("❌ Cancel ❌", callback_data=(f"cancel {gid}").encode("UTF-8")))
+                ikeyboard.append(InlineKeyboardButton("⛔ Cancel ⛔", callback_data=(f"cancel {gid}").encode("UTF-8")))
                 inline_keyboard.append(ikeyboard)
                 reply_markup = InlineKeyboardMarkup(inline_keyboard)
                 #msg += reply_markup
